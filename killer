@@ -9,14 +9,14 @@ local Window = Fluent:CreateWindow({
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.T
+    MinimizeKey = Enum.LeftControl
 })
 
 -- สร้าง Tab ต่างๆ
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "Sword" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
     Esp = Window:AddTab({ Title = "Esp", Icon = "Eye" }),
-    Setting = Window:AddTab({ Title = "Setting", Icon = "Eye" })
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
 -- ปุ่มใน Tab "Main"
