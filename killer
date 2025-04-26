@@ -16,7 +16,7 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "Sword" }),
     Esp = Window:AddTab({ Title = "Esp", Icon = "Eye" }),
-    Setting = Window:AddTab({ Title = "Main", Icon = "Setting" })
+    Setting = Window:AddTab({ Title = "Main", Icon = "Eye" })
 }
 
 -- ปุ่มใน Tab "Main"
