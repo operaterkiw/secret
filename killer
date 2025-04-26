@@ -131,15 +131,16 @@ Tabs.Esp:AddButton({
     end
 })
 
+-- ปุ่มเปิดปิดสำหรับมือถือ (เวอร์ชันแก้ไขแล้ว)
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "FluentToggleGui"
-ScreenGui.Parent = game.CoreGui
+ScreenGui.Parent = game:GetService("CoreGui")
 
 local ToggleButton = Instance.new("TextButton")
 ToggleButton.Size = UDim2.new(0, 120, 0, 40)
 ToggleButton.Position = UDim2.new(0, 10, 0, 10) -- มุมซ้ายบน
 ToggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-ToggleButton.Text = "เปิด/ปิด"
+ToggleButton.Text = "เปิดปิด"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleButton.Font = Enum.Font.Gotham
 ToggleButton.TextSize = 14
@@ -149,14 +150,15 @@ ToggleButton.BackgroundTransparency = 0.2
 ToggleButton.AutoButtonColor = true
 ToggleButton.ZIndex = 9999999
 
--- ซ่อน/โชว์ Fluent Window
+-- ตัวแปรไว้จำสถานะ
 local menuOpened = true
 
+-- กดปุ่มแล้วสลับเปิด/ปิด
 ToggleButton.MouseButton1Click:Connect(function()
     menuOpened = not menuOpened
-    for _, v in pairs(game.CoreGui:GetChildren()) do
-        if v.Name == "Fluent" then
-            v.Enabled = menuOpened
-        end
+    if menuOpened then
+        Window:Minimize(false) -- เปิดเมนู
+    else
+        Window:Minimize(true) -- ปิดเมนู
     end
 end)
