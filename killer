@@ -1,55 +1,98 @@
+-- โหลด RedzHub UI Library
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/main/Redzhubui"))()
 
+-- สร้างหน้าต่างหลัก
 local Window = redzlib:MakeWindow({
     Title = "EVANGELX HUB",
     SubTitle = "Secret Killer",
     SaveFolder = "EVANGELX_HUB_Save"
 })
 
+-- สร้างแท็บ
 local mainTab = Window:MakeTab({Name = "Main", Icon = "rbxassetid://yourIconId", PremiumOnly = false})
 local espTab = Window:MakeTab({Name = "ESP", Icon = "rbxassetid://yourIconId", PremiumOnly = false})
 
+-- สร้างส่วนในแท็บ
 local mainSection = mainTab:AddSection({Name = "Main Scripts"})
 local espSection = espTab:AddSection({Name = "ESP Options"})
 
-mainSection:AddButton({
+-- ฟังก์ชันสำหรับโหลดและรันสคริปต์จาก URL
+local function loadScript(url)
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet(url))()
+    end)
+    if not success then
+        warn("Failed to load script from: " .. url)
+    end
+end
+
+-- Invisible Toggle
+mainSection:AddToggle({
     Name = "Invisible",
-    Callback = function()
-        loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
-        print("Invisible Activated")
+    Default = false,
+    Callback = function(state)
+        if state then
+            loadScript('https://pastebin.com/raw/3Rnd9rHf')
+            print("Invisible Activated")
+        else
+            -- ไม่มีฟังก์ชันปิดสำหรับ Invisible
+            print("Invisible Deactivated (No deactivation script available)")
+        end
     end
 })
 
-mainSection:AddButton({
+-- Fling Toggle
+mainSection:AddToggle({
     Name = "Fling",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Orangecatgamer696969/Fling-gui/main/README.md", true))()
-        print("Fling Activated")
+    Default = false,
+    Callback = function(state)
+        if state then
+            loadScript("https://raw.githubusercontent.com/Orangecatgamer696969/Fling-gui/main/README.md")
+            print("Fling Activated")
+        else
+            -- ไม่มีฟังก์ชันปิดสำหรับ Fling
+            print("Fling Deactivated (No deactivation script available)")
+        end
     end
 })
 
-mainSection:AddButton({
+-- Fly Toggle
+mainSection:AddToggle({
     Name = "Fly",
-    Callback = function()
-        loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
-        print("Fly Activated")
+    Default = false,
+    Callback = function(state)
+        if state then
+            loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+            print("Fly Activated")
+        else
+            -- ไม่มีฟังก์ชันปิดสำหรับ Fly
+            print("Fly Deactivated (No deactivation script available)")
+        end
     end
 })
 
-mainSection:AddButton({
+-- Hitbox Expander Toggle
+mainSection:AddToggle({
     Name = "Hitbox Expander",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/HitboxExpander.lua"))()
-        print("Hitbox Expander Activated")
+    Default = false,
+    Callback = function(state)
+        if state then
+            loadScript("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/HitboxExpander.lua")
+            print("Hitbox Expander Activated")
+        else
+            -- ไม่มีฟังก์ชันปิดสำหรับ Hitbox Expander
+            print("Hitbox Expander Deactivated (No deactivation script available)")
+        end
     end
 })
 
+-- Monster And Sheriff ESP Toggle
 espSection:AddToggle({
     Name = "Monster And Sheriff ESP",
     Default = false,
     Callback = function(state)
         if state then
-            -- เปิด ESP
+            -- ฟังก์ชันสำหรับวิเคราะห์และไฮไลต์ผู้เล่น
             local function analyzePlayerInventory(player)
                 local function checkItem(itemName)
                     local inventory = player.Backpack:GetChildren()
@@ -93,6 +136,7 @@ espSection:AddToggle({
                 end
             end
 
+            -- เริ่มการวิเคราะห์
             local function startAnalyzing()
                 while true do
                     for _, player in pairs(game.Players:GetPlayers()) do
@@ -102,6 +146,7 @@ espSection:AddToggle({
                 end
             end
 
+            -- เชื่อมต่อกับเหตุการณ์
             game.Players.PlayerAdded:Connect(function(player)
                 player.CharacterAdded:Connect(function()
                     wait(1)
@@ -116,10 +161,17 @@ espSection:AddToggle({
                 end)
             end
 
+            -- เริ่มการวิเคราะห์
             startAnalyzing()
             print("ESP Activated")
         else
-            -- ปิด ESP (ยังไม่ได้เขียน ส่วนนี้ถ้าอยากได้เดี๋ยวทำต่อให้)
+            -- ปิดการไฮไลต์ทั้งหมด
+            for _, player in pairs(game.Players:GetPlayers()) do
+                local highlight = player.Character and player.Character:FindFirstChild("Highlight")
+                if highlight then
+                    highlight:Destroy()
+                end
+            end
             print("ESP Deactivated")
         end
     end
