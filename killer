@@ -30,11 +30,10 @@ Tabs.Main:AddButton({
 })
 
 Tabs.Main:AddButton({
-    Title = "Fling",
-    Description = "Fling other players around.",
+    Title = "None",
+    Description = "None",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Orangecatgamer696969/Fling-gui/main/README.md", true))()
-        print("Fling script loaded!")
+        print("None script loaded!")
     end
 })
 
