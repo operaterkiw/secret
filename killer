@@ -143,7 +143,7 @@ task.spawn(function()
     end
 end)
 
-Keybind:SetValue("MB2", "Toggle")
+Keybind:SetValue("...", "Toggle")
 
 -- ปุ่มเปิดปิดเมนูแบบมี Animation
 local TweenService = game:GetService("TweenService")
@@ -155,7 +155,7 @@ local ToggleButton = Instance.new("TextButton")
 ToggleButton.Size = UDim2.new(0, 120, 0, 40)
 ToggleButton.Position = UDim2.new(0, 10, 0, 10)
 ToggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-ToggleButton.Text = "เปิดปิด"
+ToggleButton.Text = "เปิด/ปิด"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleButton.Font = Enum.Font.Gotham
 ToggleButton.TextSize = 14
