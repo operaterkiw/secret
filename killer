@@ -1,6 +1,10 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
-local window = redzlib:CreateWindow("OxyHubV3")
+local Window = redzlib:MakeWindow({
+  Title = "EVANGELX HUB",
+  SubTitle = "Secret Killer",
+  SaveFolder = "Version: Last ver for redz ui"
+})
 
 local mainTab = window:CreateTab("Main")
 local espTab = window:CreateTab("Esp")
