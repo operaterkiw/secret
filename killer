@@ -176,3 +176,10 @@ espSection:AddToggle({
         end
     end
 })
+       highlight:Destroy()
+                end
+            end
+            print("ESP Deactivated")
+        end
+    end
+})
