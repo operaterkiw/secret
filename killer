@@ -1,185 +1,162 @@
--- โหลด RedzHub UI Library
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/main/Redzhubui"))()
+-- โหลด Fluent UI
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
--- สร้างหน้าต่างหลัก
-local Window = redzlib:MakeWindow({
+-- สร้างหน้าต่าง
+local Window = Fluent:CreateWindow({
     Title = "EVANGELX HUB",
-    SubTitle = "Secret Killer",
-    SaveFolder = "EVANGELX_HUB_Save"
+    SubTitle = "1.0  with i love namkhing",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.P
 })
 
--- สร้างแท็บ
-local mainTab = Window:MakeTab({Name = "Main", Icon = "rbxassetid://yourIconId", PremiumOnly = false})
-local espTab = Window:MakeTab({Name = "ESP", Icon = "rbxassetid://yourIconId", PremiumOnly = false})
+-- สร้าง Tab ต่างๆ
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "Sword" }),
+    Esp = Window:AddTab({ Title = "Esp", Icon = "Eye" })
+}
 
--- สร้างส่วนในแท็บ
-local mainSection = mainTab:AddSection({Name = "Main Scripts"})
-local espSection = espTab:AddSection({Name = "ESP Options"})
-
--- ฟังก์ชันสำหรับโหลดและรันสคริปต์จาก URL
-local function loadScript(url)
-    local success, result = pcall(function()
-        return loadstring(game:HttpGet(url))()
-    end)
-    if not success then
-        warn("Failed to load script from: " .. url)
-    end
-end
-
--- Invisible Toggle
-mainSection:AddToggle({
-    Name = "Invisible",
-    Default = false,
-    Callback = function(state)
-        if state then
-            loadScript('https://pastebin.com/raw/3Rnd9rHf')
-            print("Invisible Activated")
-        else
-            -- ไม่มีฟังก์ชันปิดสำหรับ Invisible
-            print("Invisible Deactivated (No deactivation script available)")
-        end
+-- ปุ่มใน Tab "Main"
+Tabs.Main:AddButton({
+    Title = "Invisible",
+    Description = "Become invisible.",
+    Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+        print("Invisible script loaded!")
     end
 })
 
--- Fling Toggle
-mainSection:AddToggle({
-    Name = "Fling",
-    Default = false,
-    Callback = function(state)
-        if state then
-            loadScript("https://raw.githubusercontent.com/Orangecatgamer696969/Fling-gui/main/README.md")
-            print("Fling Activated")
-        else
-            -- ไม่มีฟังก์ชันปิดสำหรับ Fling
-            print("Fling Deactivated (No deactivation script available)")
-        end
+Tabs.Main:AddButton({
+    Title = "Fling",
+    Description = "Fling other players around.",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Orangecatgamer696969/Fling-gui/main/README.md", true))()
+        print("Fling script loaded!")
     end
 })
 
--- Fly Toggle
-mainSection:AddToggle({
-    Name = "Fly",
-    Default = false,
-    Callback = function(state)
-        if state then
-            loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
-            print("Fly Activated")
-        else
-            -- ไม่มีฟังก์ชันปิดสำหรับ Fly
-            print("Fly Deactivated (No deactivation script available)")
-        end
+Tabs.Main:AddButton({
+    Title = "Fly",
+    Description = "Fly like a bird.",
+    Callback = function()
+        loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+        print("Fly script loaded!")
     end
 })
 
--- Hitbox Expander Toggle
-mainSection:AddToggle({
-    Name = "Hitbox Expander",
-    Default = false,
-    Callback = function(state)
-        if state then
-            loadScript("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/HitboxExpander.lua")
-            print("Hitbox Expander Activated")
-        else
-            -- ไม่มีฟังก์ชันปิดสำหรับ Hitbox Expander
-            print("Hitbox Expander Deactivated (No deactivation script available)")
-        end
+Tabs.Main:AddButton({
+    Title = "Hitbox Expander",
+    Description = "Expand hitboxes for easier targeting.",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/HitboxExpander.lua"))()
+        print("Hitbox Expander loaded!")
     end
 })
 
--- Monster And Sheriff ESP Toggle
-espSection:AddToggle({
-    Name = "Monster And Sheriff ESP",
-    Default = false,
-    Callback = function(state)
-        if state then
-            -- ฟังก์ชันสำหรับวิเคราะห์และไฮไลต์ผู้เล่น
-            local function analyzePlayerInventory(player)
-                local function checkItem(itemName)
-                    local inventory = player.Backpack:GetChildren()
-                    local character = player.Character
-                    for _, item in pairs(inventory) do
-                        if item.Name == itemName then
+-- ปุ่มใน Tab "Esp"
+Tabs.Esp:AddButton({
+    Title = "Monster And Sheriff Esp",
+    Description = "Highlight players with Monster or Gun.",
+    Callback = function()
+        local function analyzePlayerInventory(player)
+            local function checkItem(itemName)
+                local inventory = player.Backpack:GetChildren()
+                local character = player.Character
+                for _, item in pairs(inventory) do
+                    if item.Name == itemName then
+                        return true
+                    end
+                end
+                if character then
+                    for _, item in pairs(character:GetChildren()) do
+                        if item:IsA("Tool") and item.Name == itemName then
                             return true
                         end
                     end
-                    if character then
-                        for _, item in pairs(character:GetChildren()) do
-                            if item:IsA("Tool") and item.Name == itemName then
-                                return true
-                            end
-                        end
-                    end
-                    return false
                 end
-
-                local hasMonster = checkItem("Monster")
-                local hasGun = checkItem("Gun")
-
-                if hasMonster or hasGun then
-                    local highlight = player.Character:FindFirstChild("Highlight")
-                    if not highlight then
-                        highlight = Instance.new("Highlight")
-                        highlight.Adornee = player.Character
-                        highlight.Parent = player.Character
-                    end
-
-                    if hasMonster then
-                        highlight.FillColor = Color3.new(1, 0, 0)
-                    elseif hasGun then
-                        highlight.FillColor = Color3.new(0, 0, 1)
-                    end
-                else
-                    local highlight = player.Character and player.Character:FindFirstChild("Highlight")
-                    if highlight then
-                        highlight:Destroy()
-                    end
-                end
+                return false
             end
 
-            -- เริ่มการวิเคราะห์
-            local function startAnalyzing()
-                while true do
-                    for _, player in pairs(game.Players:GetPlayers()) do
-                        analyzePlayerInventory(player)
-                    end
-                    wait(1)
+            local hasMonster = checkItem("Monster")
+            local hasGun = checkItem("Gun")
+
+            if hasMonster or hasGun then
+                local highlight = player.Character:FindFirstChild("Highlight")
+                if not highlight then
+                    highlight = Instance.new("Highlight")
+                    highlight.Adornee = player.Character
+                    highlight.Parent = player.Character
                 end
-            end
 
-            -- เชื่อมต่อกับเหตุการณ์
-            game.Players.PlayerAdded:Connect(function(player)
-                player.CharacterAdded:Connect(function()
-                    wait(1)
-                    analyzePlayerInventory(player)
-                end)
-            end)
-
-            for _, player in pairs(game.Players:GetPlayers()) do
-                player.CharacterAdded:Connect(function()
-                    wait(1)
-                    analyzePlayerInventory(player)
-                end)
-            end
-
-            -- เริ่มการวิเคราะห์
-            startAnalyzing()
-            print("ESP Activated")
-        else
-            -- ปิดการไฮไลต์ทั้งหมด
-            for _, player in pairs(game.Players:GetPlayers()) do
+                if hasMonster then
+                    highlight.FillColor = Color3.new(1, 0, 0) -- สีแดง
+                elseif hasGun then
+                    highlight.FillColor = Color3.new(0, 0, 1) -- สีน้ำเงิน
+                end
+            else
                 local highlight = player.Character and player.Character:FindFirstChild("Highlight")
                 if highlight then
                     highlight:Destroy()
                 end
             end
-            print("ESP Deactivated")
         end
-    end
-})
-       highlight:Destroy()
+
+        local function startAnalyzing()
+            while true do
+                for _, player in pairs(game.Players:GetPlayers()) do
+                    analyzePlayerInventory(player)
                 end
+                wait(1)
             end
-            print("ESP Deactivated")
         end
+
+        game.Players.PlayerAdded:Connect(function(player)
+            player.CharacterAdded:Connect(function()
+                wait(1)
+                analyzePlayerInventory(player)
+            end)
+        end)
+
+        for _, player in pairs(game.Players:GetPlayers()) do
+            player.CharacterAdded:Connect(function()
+                wait(1)
+                analyzePlayerInventory(player)
+            end)
+        end
+
+        startAnalyzing()
+        print("ESP script started!")
     end
 })
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "FluentToggleGui"
+ScreenGui.Parent = game.CoreGui
+
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Size = UDim2.new(0, 120, 0, 40)
+ToggleButton.Position = UDim2.new(0, 10, 0, 10) -- มุมซ้ายบน
+ToggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ToggleButton.Text = "เปิด/ปิด"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.Font = Enum.Font.Gotham
+ToggleButton.TextSize = 14
+ToggleButton.Parent = ScreenGui
+ToggleButton.BorderSizePixel = 0
+ToggleButton.BackgroundTransparency = 0.2
+ToggleButton.AutoButtonColor = true
+ToggleButton.ZIndex = 9999999
+
+-- ซ่อน/โชว์ Fluent Window
+local menuOpened = true
+
+ToggleButton.MouseButton1Click:Connect(function()
+    menuOpened = not menuOpened
+    for _, v in pairs(game.CoreGui:GetChildren()) do
+        if v.Name == "Fluent" then
+            v.Enabled = menuOpened
+        end
+    end
+end)
