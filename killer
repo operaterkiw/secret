@@ -57,7 +57,7 @@ Tabs.Main:AddButton({
 })
 
 -- ปุ่มใน Tab "Esp"
-Tabs.Esp:Toggle({
+Tabs.Esp:AddToggle({
     Title = "Monster And Sheriff Esp",
     Description = "Highlight players with Monster or Gun.",
     Callback = function()
