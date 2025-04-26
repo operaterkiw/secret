@@ -15,7 +15,7 @@ local Window = Fluent:CreateWindow({
 -- สร้าง Tab ต่างๆ
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Esp = Window:AddTab({ Title = "Esp", Icon = "Eye" }),
+    Esp = Window:AddTab({ Title = "Esp", Icon = "eye" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -132,7 +132,7 @@ Tabs.Esp:AddButton({
     end
 })
 
-    local Keybind = Tabs.Setting:AddKeybind("Keybind", {
+    local Keybind = Tabs.Settings:AddKeybind("Keybind", {
         Title = "KeyBind",
         Mode = "Toggle", -- Always, Toggle, Hold
         Default = "LeftControl", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
