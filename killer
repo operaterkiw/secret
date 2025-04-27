@@ -1,25 +1,21 @@
--- โหลด Fluent UI
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
--- สร้างหน้าต่าง
 local Window = Fluent:CreateWindow({
     Title = "EVANGELX HUB",
     SubTitle = "1.0  with i love namkhing",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
-    Theme = "Dark",
+    Theme = "Darker",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
--- สร้าง Tab ต่างๆ
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
     Esp = Window:AddTab({ Title = "Esp", Icon = "eye" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
--- ปุ่มใน Tab "Main"
 Tabs.Main:AddButton({
     Title = "Invisible",
     Description = "Become invisible.",
@@ -30,10 +26,11 @@ Tabs.Main:AddButton({
 })
 
 Tabs.Main:AddButton({
-    Title = "None",
-    Description = "None",
+    Title = "Aimbot",
+    Description = "Aimbot fov",
     Callback = function()
-        print("None script loaded!")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/operaterkiw/aimbot/refs/heads/main/fov"))()
+        print("Aimbot script loaded!")
     end
 })
 
@@ -55,7 +52,6 @@ Tabs.Main:AddButton({
     end
 })
 
--- ปุ่มใน Tab "Esp"
 Tabs.Esp:AddButton({
     Title = "Monster And Sheriff Esp",
     Description = "Highlight players with Monster or Gun.",
@@ -98,7 +94,6 @@ Tabs.Esp:AddButton({
             end
         end
 
-        -- Update แบบเบาๆด้วย Heartbeat
         RunService.Heartbeat:Connect(function(dt)
             for _, player in ipairs(game.Players:GetPlayers()) do
                 analyzePlayerInventory(player)
@@ -144,7 +139,6 @@ end)
 
 Keybind:SetValue("...", "Toggle")
 
--- ปุ่มเปิดปิดเมนูแบบมี Animation
 local TweenService = game:GetService("TweenService")
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "FluentToggleGui"
